@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<title>The Teen Brain — Rational vs. Emotional · Brain Behaviour Academy</title>
+
+<!-- Typeface pairing: Space Grotesk (display, technical-warm) + Inter (body). Falls back to system fonts if offline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- 3D stage -->
+<canvas id="scene"></canvas>
+<div id="labels"></div>
+
+<!-- Header -->
+<header>
+  <div class="brand">
+    <div class="kicker">Brain Behaviour Academy · Adolescent Neuroscience</div>
+    <h1>The Teen Brain — <span class="r">Rational</span> vs. <span class="e">Emotional</span></h1>
+  </div>
+  <div class="author">
+    <div class="name">Sridhar Pallia</div>
+    <div class="role">Adolescent Psychologist · Founder</div>
+  </div>
+</header>
+
+<!-- Legend (also opens the two master panels) -->
+<div class="legend">
+  <div class="legend-card rational" data-open="rational" role="button" tabindex="0">
+    <span class="dot"></span><span class="t">Rational Mind</span>
+    <span class="s">Prefrontal Cortex — thinks, plans, controls impulses.</span>
+  </div>
+  <div class="legend-card emotional" data-open="emotional" role="button" tabindex="0">
+    <span class="dot"></span><span class="t">Emotional Mind</span>
+    <span class="s">Limbic System — feels, reacts, seeks reward.</span>
+  </div>
+  <div class="legend-hint">Tip: drag to rotate · scroll to zoom · tap a glowing hotspot to explore.</div>
+</div>
+
+<!-- Comparison dashboard -->
+<div class="compare" id="compare">
+  <div class="compare-head">
+    <span class="ttl">Two minds, side by side</span>
+  </div>
+  <div class="compare-cols">
+    <span class="cr">Rational Mind</span>
+    <span class="ce">Emotional Mind</span>
+  </div>
+  <div class="cmp-rows" id="cmpRows"></div>
+</div>
+
+<!-- Info side panel -->
+<aside class="panel" id="panel" aria-live="polite">
+  <button class="panel-close" id="panelClose" aria-label="Close panel">×</button>
+  <div class="panel-head">
+    <div class="tag" id="pTag"></div>
+    <h2 id="pTitle"></h2>
+    <div class="sub" id="pSub"></div>
+  </div>
+  <div class="panel-body" id="pBody"></div>
+</aside>
+
+<!-- Timeline overlay -->
+<div class="timeline" id="timeline">
+  <h2>Brain development timeline</h2>
+  <div class="lead">Watch how the emotional and rational systems mature at different speeds. Tap a stage to spotlight it on the brain.</div>
+  <div class="track" id="track"></div>
+</div>
+
+<!-- Scenario explanation toast -->
+<div class="scenario-note" id="scenarioNote">
+  <div class="step" id="scStep">Teen Brain Scenario</div>
+  <div class="txt" id="scTxt"></div>
+</div>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <button class="btn primary" id="btnScenario">▶ Teen Brain Scenario</button>
+  <button class="btn on" id="btnRotate">Auto-rotate</button>
+  <button class="btn on" id="btnLabels">Labels</button>
+  <button class="btn on" id="btnPaths">Neural pathways</button>
+  <button class="btn on" id="btnNeurons">Neurons</button>
+  <button class="btn" id="btnExplode">Explode view</button>
+  <button class="btn" id="btnCompare">Comparison</button>
+  <button class="btn" id="btnTimeline">Timeline</button>
+  <button class="btn" id="btnReset">Reset view</button>
+</div>
+
+<!-- Loading veil -->
+<div id="veil"><div class="spinner"><div class="ring"></div><div class="t">Growing a brain…</div></div></div>
+
+<!-- Three.js (classic UMD build — loads fine from file:// because it is a network script, not an ES module) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
